@@ -61,10 +61,10 @@ public class PatientController {
     }
 
     @GetMapping(value = "patients/{patientId}/{section}")
-    public ResponseEntity<Patient> readVaccinationsByPatientIdAndVaccinationId(@PathVariable(name = "patientId") int patientId,
-                                                                               @PathVariable(name = "section") String section,
-                                                                               @RequestParam(value = "page", defaultValue = "1") int page,
-                                                                               @RequestParam(value = "size", defaultValue = "1") int size) {
+    public ResponseEntity<Patient> readPatientAndVaccinationsByPatientId(@PathVariable(name = "patientId") int patientId,
+                                                               @PathVariable(name = "section") String section,
+                                                               @RequestParam(value = "page", defaultValue = "1") int page,
+                                                               @RequestParam(value = "size", defaultValue = "1") int size) {
 
         Patient patient;
         List<Vaccination> vaccinations;
