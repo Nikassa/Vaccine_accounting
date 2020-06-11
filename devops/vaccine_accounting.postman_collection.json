@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "d8194c45-bfef-4b96-809a-9832cd8553bb",
+		"name": "vaccine_accounting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Patient",
+			"item": [
+				{
+					"name": "Получение списка",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/patients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавление",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"lastName\" : \"Петров\",\n\t\"firstName\" : \"Петр\",\n\t\"middleName\" : \"Петрович\",\n\t\"birthDate\" : \"01.01.1990\",\n\t\"gender\" : \"male\",\n\t\"insuranceNumber\" : \"160-722-773-54\",\n\t \"vaccinations\": [\n        {\n            \"vaccine\": \"АКДС\",\n            \"permission\": \"Y\",\n            \"vaccinationDate\": \"15.03.2020\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/patients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Редактирование",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"id\": 1,\n    \"lastName\": \"Иванов\",\n    \"firstName\": \"Иван\",\n    \"middleName\": \"Иванович\",\n    \"birthDate\": \"15.05.1980\",\n    \"gender\": \"male\",\n    \"insuranceNumber\": \"160-722-773-54\",\n    \"vaccinations\": [\n        {\n            \"id\": 1,\n            \"vaccine\": \"АКДС\",\n            \"permission\": \"Y\",\n            \"vaccinationDate\": \"15.03.2020\"\n        },\n        {\n            \"id\": 2,\n            \"vaccine\": \"Вианвак\",\n            \"permission\": \"N\",\n            \"vaccinationDate\": \"20.03.2020\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/patients/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Natalie\",\n\t\"email\" : \"natalie@jr.com\",\n\t\"phone\" : \"+7 (191) 746-43-23\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/patients/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение пациента и списка прививок по идентификатору",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/patients/1/vaccinations?page=1&size=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients",
+								"1",
+								"vaccinations"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Vaccination",
+			"item": [
+				{
+					"name": "Добавление",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"vaccine\" : \"БЦЖ\",\n\t\"permission\" : \"N\",\n\t\"vaccinationDate\" : \"23.03.2003\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/vaccinations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vaccinations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение по идентификатору",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/vaccinations/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vaccinations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Редактирование",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n\t\"vaccine\" : \"АКДС\",\n\t\"permission\" : \"Y\",\n    \"vaccinationDate\": \"15.03.2020\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/vaccinations/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vaccinations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Natalie\",\n\t\"email\" : \"natalie@jr.com\",\n\t\"phone\" : \"+7 (191) 746-43-23\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/vaccinations/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vaccinations",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b0cdb514-3b5c-463a-b623-d7b9ab8eae20",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a456eee5-4555-4733-be3e-6b9f131e09d8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
