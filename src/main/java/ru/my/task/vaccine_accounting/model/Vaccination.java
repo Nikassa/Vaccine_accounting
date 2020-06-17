@@ -3,6 +3,7 @@ package ru.my.task.vaccine_accounting.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -20,14 +21,17 @@ public class Vaccination {
     @GenericGenerator(name = "increment", strategy = "increment")
     private Integer id;
 
+    @ApiModelProperty("Препарат")
     @Pattern(regexp = "Эджерикс|Вианвак|АКДС|БЦЖ")
     @Column(name = "vaccine")
     private String vaccine;
 
+    @ApiModelProperty("Согласие на прививку")
     @Pattern(regexp = "Y|N")
     @Column(name = "permission")
     private String permission;
 
+    @ApiModelProperty("Дата проведения")
     @Column(name = "vaccination_date")
     @JsonFormat(pattern = "dd.MM.yyyy")
     private Date vaccinationDate;

@@ -2,12 +2,15 @@ package ru.my.task.vaccine_accounting.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.GenericGenerator;
 import ru.my.task.vaccine_accounting.annotation.InsuranceNumber;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +18,7 @@ import java.util.List;
 @Entity
 @Table(name = "patient")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@XmlRootElement(name = "Pet")
 public class Patient {
 
     @Id
@@ -41,6 +45,7 @@ public class Patient {
     @Column(name = "gender")
     private String gender;
 
+    @ApiModelProperty("СНИЛС")
     @InsuranceNumber
     @Column(name = "insurance_number")
     private String insuranceNumber;
@@ -67,6 +72,7 @@ public class Patient {
         this.vaccinations = new ArrayList<>();
     }
 
+    @XmlElement(name = "id")
     public Integer getId() {
         return id;
     }

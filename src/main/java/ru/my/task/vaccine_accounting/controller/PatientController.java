@@ -1,9 +1,12 @@
 package ru.my.task.vaccine_accounting.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.my.task.vaccine_accounting.controller.util.SwaggerDocuments;
 import ru.my.task.vaccine_accounting.model.Patient;
 import ru.my.task.vaccine_accounting.model.Vaccination;
 import ru.my.task.vaccine_accounting.service.PatientService;
@@ -15,6 +18,8 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/api")
+@Api(tags = "Операции c пациентами")
 public class PatientController {
 
     @PersistenceContext
@@ -27,12 +32,14 @@ public class PatientController {
         this.patientService = patientService;
     }
 
+    @ApiOperation("Добавление пациента")
     @PostMapping(value = "/patients")
     public ResponseEntity<?> create(@Valid @RequestBody Patient patient) {
         patientService.create(patient);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @ApiOperation(value = "Получение списка пациентов", notes = SwaggerDocuments.GET_PATIENT_NOTES)
     @GetMapping(value = "/patients")
     public ResponseEntity<List<Patient>> read() {
         final List<Patient> patients = patientService.readAll();
@@ -42,6 +49,7 @@ public class PatientController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @ApiOperation("Редактирование пациента")
     @PutMapping(value = "/patients/{id}")
     public ResponseEntity<?> update(@PathVariable(name = "id") int id, @RequestBody Patient patient) {
         final boolean updated = patientService.update(patient, id);
@@ -51,6 +59,7 @@ public class PatientController {
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 
+    @ApiOperation("Удаление пациента")
     @DeleteMapping(value = "/patients/{id}")
     public ResponseEntity<?> delete(@PathVariable(name = "id") int id) {
         final boolean deleted = patientService.delete(id);
@@ -60,11 +69,12 @@ public class PatientController {
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 
+    @ApiOperation(value = "Получение пациента по идентификатору", notes = SwaggerDocuments.GET_PATIENT_NOTES)
     @GetMapping(value = "patients/{patientId}/{section}")
     public ResponseEntity<Patient> readPatientAndVaccinationsByPatientId(@PathVariable(name = "patientId") int patientId,
-                                                               @PathVariable(name = "section") String section,
-                                                               @RequestParam(value = "page", defaultValue = "1") int page,
-                                                               @RequestParam(value = "size", defaultValue = "1") int size) {
+                                                                         @PathVariable(name = "section") String section,
+                                                                         @RequestParam(value = "page", defaultValue = "1") int page,
+                                                                         @RequestParam(value = "size", defaultValue = "1") int size) {
 
         Patient patient;
         List<Vaccination> vaccinations;
