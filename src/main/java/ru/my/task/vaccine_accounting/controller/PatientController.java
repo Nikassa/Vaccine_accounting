@@ -40,7 +40,7 @@ public class PatientController {
     }
 
     @ApiOperation(value = "Получение списка пациентов", notes = SwaggerDocuments.GET_PATIENT_NOTES)
-    @GetMapping(value = "/patients")
+    @GetMapping(value = "/patients", produces = {"application/json"})
     public ResponseEntity<List<Patient>> read() {
         final List<Patient> patients = patientService.readAll();
 
@@ -70,7 +70,7 @@ public class PatientController {
     }
 
     @ApiOperation(value = "Получение пациента по идентификатору", notes = SwaggerDocuments.GET_PATIENT_NOTES)
-    @GetMapping(value = "patients/{patientId}/{section}")
+    @GetMapping(value = "patients/{patientId}/{section}", produces = {"application/json"})
     public ResponseEntity<Patient> readPatientAndVaccinationsByPatientId(@PathVariable(name = "patientId") int patientId,
                                                                          @PathVariable(name = "section") String section,
                                                                          @RequestParam(value = "page", defaultValue = "1") int page,
