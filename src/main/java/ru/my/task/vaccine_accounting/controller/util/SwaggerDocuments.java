@@ -9,7 +9,7 @@ public class SwaggerDocuments {
             "middleName - отчество" + "\n" +
             "birthDate - дата рождения в формате dd.mm.yyyy" + "\n" +
             "gender - пол" + "\n" +
-            "insuranceNumber - СНИЛС в формате ХХХ-ХХХ-ХХХ-ХХ";
+            "insuranceNumber - СНИЛС в формате ХХХ-ХХХ-ХХХ ХХ";
 
     public static final String GET_VACCINATION_NOTES = "Параметры запроса: \n" +
             "id - идентификатор" + "\n" +

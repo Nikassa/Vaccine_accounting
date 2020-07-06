@@ -55,8 +55,8 @@ public class VaccinationController {
         final boolean deleted = vaccinationService.delete(id);
 
         return deleted
-                ? new ResponseEntity<>(HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+                ? new ResponseEntity<>(HttpStatus.ACCEPTED)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 }

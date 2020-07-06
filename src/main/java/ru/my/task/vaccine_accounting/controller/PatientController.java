@@ -65,8 +65,8 @@ public class PatientController {
         final boolean deleted = patientService.delete(id);
 
         return deleted
-                ? new ResponseEntity<>(HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+                ? new ResponseEntity<>(HttpStatus.ACCEPTED)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @ApiOperation(value = "Получение пациента по идентификатору", notes = SwaggerDocuments.GET_PATIENT_NOTES)

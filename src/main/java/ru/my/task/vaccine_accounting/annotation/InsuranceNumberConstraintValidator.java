@@ -1,5 +1,7 @@
 package ru.my.task.vaccine_accounting.annotation;
 
+import com.google.common.annotations.VisibleForTesting;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.Arrays;
@@ -11,20 +13,22 @@ public class InsuranceNumberConstraintValidator implements ConstraintValidator<I
         //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    //    format ХХХ-ХХХ-ХХХ-ХХ
+    //    format ХХХ-ХХХ-ХХХ ХХ
+    @VisibleForTesting
     @Override
     public boolean isValid(String insuranceNumberField, ConstraintValidatorContext cxt) {
         boolean result = false;
 
         if ((insuranceNumberField == null) || (insuranceNumberField.equals(""))) {
             return false;
-        } else if (!insuranceNumberField.matches("^\\d{3}-\\d{3}-\\d{3}-\\d{2}$")) {
+        } else if (!insuranceNumberField.matches("^\\d{3}-\\d{3}-\\d{3}\\s\\d{2}$")) {
             return false;
         } else if (insuranceNumberField.length() != 14) {
             return false;
         }
 
         insuranceNumberField = insuranceNumberField.replace("-", "");
+        insuranceNumberField = insuranceNumberField.replace(" ", "");
 
         if (insuranceNumberField.length() != 11) {
             return false;
