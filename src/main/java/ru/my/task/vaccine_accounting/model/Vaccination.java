@@ -17,8 +17,9 @@ import java.util.List;
 public class Vaccination {
 
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id")
+    @SequenceGenerator(name = "vaccinesIdSeq", sequenceName = "vaccines_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "vaccinesIdSeq")
     private Integer id;
 
     @ApiModelProperty("Препарат")

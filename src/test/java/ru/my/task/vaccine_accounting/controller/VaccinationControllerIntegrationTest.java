@@ -77,7 +77,7 @@ public class VaccinationControllerIntegrationTest {
 
     @Test
     public void whenDeleteVaccination_thenReturnStatusAccepted() throws Exception {
-        mvc.perform(delete("/api/vaccinations/{id}", 33))
+        mvc.perform(delete("/api/vaccinations/{id}", 35))
                 .andExpect(status().isAccepted());
     }
 
