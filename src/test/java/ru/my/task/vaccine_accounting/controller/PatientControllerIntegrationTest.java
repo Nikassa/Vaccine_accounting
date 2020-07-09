@@ -82,7 +82,7 @@ public class PatientControllerIntegrationTest {
         Patient patient = new Patient(null, "Федоров", "Федор", "Федорович",
                 new Date("14-JUN-80"), "female", "160-722-773 54");
 
-        mvc.perform(put("/patients/{id}", 60)
+        mvc.perform(put("/patients/{id}", 3)
                 .content(asJsonString(patient))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -94,7 +94,7 @@ public class PatientControllerIntegrationTest {
 
     @Test
     public void whenDeletePatient_thenReturnStatusAccepted() throws Exception {
-        mvc.perform(delete("/api/patients/{id}", 83))
+        mvc.perform(delete("/api/patients/{id}", 3))
                 .andExpect(status().isAccepted());
     }
 
