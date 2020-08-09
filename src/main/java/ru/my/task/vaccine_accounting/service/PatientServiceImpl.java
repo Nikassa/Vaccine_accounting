@@ -21,7 +21,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public void create(Patient patient) {
-        patientRepository.save(patient);
+        patientRepository.saveAndFlush(patient);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class PatientServiceImpl implements PatientService {
     public boolean update(Patient patient, int id) {
         if (patientRepository.existsById(id)) {
             patient.setId(id);
-            patientRepository.save(patient);
+            patientRepository.saveAndFlush(patient);
             return true;
         }
         return false;

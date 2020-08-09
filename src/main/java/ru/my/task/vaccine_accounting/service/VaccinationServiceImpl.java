@@ -17,7 +17,7 @@ public class VaccinationServiceImpl implements VaccinationService {
 
     @Override
     public void create(Vaccination vaccination) {
-        vaccinationRepository.save(vaccination);
+        vaccinationRepository.saveAndFlush(vaccination);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class VaccinationServiceImpl implements VaccinationService {
     public boolean update(Vaccination vaccination, int id) {
         if (vaccinationRepository.existsById(id)) {
             vaccination.setId(id);
-            vaccinationRepository.save(vaccination);
+            vaccinationRepository.saveAndFlush(vaccination);
             return true;
         }
         return false;

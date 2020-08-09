@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+
+  <changeSet id="1" author="dev">
+    <createTable schemaName="postgres" tableName="patient">
+      <column name="id" type="bigint">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="lastname" type="varchar"/>
+      <column name="firstname" type="varchar"/>
+      <column name="middlename" type="varchar"/>
+      <column name="birth_date" type="date"/>
+      <column name="gender" type="varchar"/>
+      <column name="insurance_number" type="varchar"/>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="2" author="dev">
+    <createTable schemaName="postgres" tableName="patient_vaccination">
+      <column name="patient_id" type="number"/>
+      <column name="vaccination_id" type="number"/>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="3" author="dev">
+    <createTable schemaName="postgres" tableName="vaccination">
+      <column name="id" type="bigint">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="vaccine" type="varchar"/>
+      <column name="permission" type="varchar(1)"/>
+      <column name="vaccination_date" type="date"/>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="4" author="dev">
+    <!--    <validCheckSum>ANY</validCheckSum>-->
+    <createSequence sequenceName="vaccines_id_seq" schemaName="postgres" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+  <changeSet id="5" author="dev">
+    <!--    <validCheckSum>ANY</validCheckSum>-->
+    <createSequence sequenceName="patients_id_seq" schemaName="postgres" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+</databaseChangeLog>
