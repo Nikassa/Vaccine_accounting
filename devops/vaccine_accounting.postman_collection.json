@@ -14,14 +14,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/patients",
+							"raw": "http://localhost:8080/api/patients/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"patients"
+								"api",
+								"patients",
+								""
 							]
 						}
 					},
@@ -34,7 +36,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"lastName\" : \"Петров\",\n\t\"firstName\" : \"Петр\",\n\t\"middleName\" : \"Петрович\",\n\t\"birthDate\" : \"01.01.1990\",\n\t\"gender\" : \"male\",\n\t\"insuranceNumber\" : \"160-722-773-54\",\n\t \"vaccinations\": [\n        {\n            \"vaccine\": \"АКДС\",\n            \"permission\": \"Y\",\n            \"vaccinationDate\": \"15.03.2020\"\n        }\n    ]\n}",
+							"raw": "{\n\t\"lastName\" : \"Петров\",\n\t\"firstName\" : \"Петр\",\n\t\"middleName\" : \"Петрович\",\n\t\"birthDate\" : \"01.01.1990\",\n\t\"gender\" : \"male\",\n\t\"insuranceNumber\" : \"160-722-773 54\",\n\t \"vaccinations\": [\n        {\n            \"vaccine\": \"АКДС\",\n            \"permission\": \"Y\",\n            \"vaccinationDate\": \"15.03.2020\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -42,13 +44,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/patients",
+							"raw": "http://localhost:8080/api/patients",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"api",
 								"patients"
 							]
 						}
@@ -62,7 +65,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n   \"id\": 1,\n    \"lastName\": \"Иванов\",\n    \"firstName\": \"Иван\",\n    \"middleName\": \"Иванович\",\n    \"birthDate\": \"15.05.1980\",\n    \"gender\": \"male\",\n    \"insuranceNumber\": \"160-722-773-54\",\n    \"vaccinations\": [\n        {\n            \"id\": 1,\n            \"vaccine\": \"АКДС\",\n            \"permission\": \"Y\",\n            \"vaccinationDate\": \"15.03.2020\"\n        },\n        {\n            \"id\": 2,\n            \"vaccine\": \"Вианвак\",\n            \"permission\": \"N\",\n            \"vaccinationDate\": \"20.03.2020\"\n        }\n    ]\n}",
+							"raw": "{\n   \"id\": 1,\n    \"lastName\": \"Иванов\",\n    \"firstName\": \"Иван\",\n    \"middleName\": \"Иванович\",\n    \"birthDate\": \"15.05.1980\",\n    \"gender\": \"male\",\n    \"insuranceNumber\": \"160-722-773 54\",\n    \"vaccinations\": [\n        {\n            \"id\": 1,\n            \"vaccine\": \"АКДС\",\n            \"permission\": \"Y\",\n            \"vaccinationDate\": \"15.03.2020\"\n        },\n        {\n            \"id\": 2,\n            \"vaccine\": \"Вианвак\",\n            \"permission\": \"N\",\n            \"vaccinationDate\": \"20.03.2020\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -70,13 +73,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/patients/1",
+							"raw": "http://localhost:8080/api/patients/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"api",
 								"patients",
 								"1"
 							]
@@ -99,15 +103,16 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/patients/2",
+							"raw": "http://localhost:8080/api/patients/9",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"api",
 								"patients",
-								"2"
+								"9"
 							]
 						}
 					},
@@ -119,13 +124,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/patients/1/vaccinations?page=1&size=5",
+							"raw": "http://localhost:8080/api/patients/1/vaccinations?page=1&size=5",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"api",
 								"patients",
 								"1",
 								"vaccinations"
@@ -242,13 +248,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/vaccinations/2",
+							"raw": "http://localhost:8080/api/vaccinations/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"api",
 								"vaccinations",
 								"2"
 							]
