@@ -103,7 +103,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/patients/9",
+							"raw": "http://localhost:8080/api/patients/13",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -112,7 +112,7 @@
 							"path": [
 								"api",
 								"patients",
-								"9"
+								"13"
 							]
 						}
 					},
@@ -150,8 +150,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Vaccination",
@@ -171,13 +170,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/vaccinations",
+							"raw": "http://localhost:8080/api/vaccinations",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"api",
 								"vaccinations"
 							]
 						}
@@ -190,13 +190,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/vaccinations/1",
+							"raw": "http://localhost:8080/api/vaccinations/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"api",
 								"vaccinations",
 								"1"
 							]
@@ -211,7 +212,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 1,\n\t\"vaccine\" : \"АКДС\",\n\t\"permission\" : \"Y\",\n    \"vaccinationDate\": \"15.03.2020\"\n}",
+							"raw": "{\n    \"id\": 1,\n\t\"vaccine\" : \"АКДС\",\n\t\"permission\" : \"Y\",\n    \"vaccinationDate\": \"11.03.2020\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -219,13 +220,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/vaccinations/1",
+							"raw": "http://localhost:8080/api/vaccinations/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"api",
 								"vaccinations",
 								"1"
 							]
@@ -248,7 +250,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/vaccinations/2",
+							"raw": "http://localhost:8080/api/vaccinations/12",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -257,21 +259,19 @@
 							"path": [
 								"api",
 								"vaccinations",
-								"2"
+								"12"
 							]
 						}
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "b0cdb514-3b5c-463a-b623-d7b9ab8eae20",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -281,13 +281,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "a456eee5-4555-4733-be3e-6b9f131e09d8",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
