@@ -2,6 +2,8 @@ package ru.my.task.vaccine_accounting.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,8 @@ import java.util.List;
 @Api(tags = "Операции c пациентами")
 public class PatientController {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
+
     @PersistenceContext
     public EntityManager entityManager;
 
@@ -35,13 +39,16 @@ public class PatientController {
     @ApiOperation("Добавление пациента")
     @PostMapping(value = "/patients")
     public ResponseEntity<?> create(@Valid @RequestBody Patient patient) {
-        patientService.create(patient);
+        logger.debug("Request to create patient: {} ", patient.toStringWithoutId());
+        Patient createdPatient = patientService.create(patient);
+        logger.debug("Added patient: {} ", createdPatient.toString());
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Получение списка пациентов", notes = SwaggerDocuments.GET_PATIENT_NOTES)
     @GetMapping(value = "/patients", produces = {"application/json"})
     public ResponseEntity<List<Patient>> read() {
+        logger.debug("Request to get patients list.");
         final List<Patient> patients = patientService.readAll();
 
         return patients != null && !patients.isEmpty()
@@ -52,6 +59,7 @@ public class PatientController {
     @ApiOperation("Редактирование пациента")
     @PutMapping(value = "/patients/{id}")
     public ResponseEntity<?> update(@PathVariable(name = "id") int id, @RequestBody Patient patient) {
+        logger.debug("Request to update patient: {} ", patient.toString());
         final boolean updated = patientService.update(patient, id);
 
         return updated
@@ -62,6 +70,7 @@ public class PatientController {
     @ApiOperation("Удаление пациента")
     @DeleteMapping(value = "/patients/{id}")
     public ResponseEntity<?> delete(@PathVariable(name = "id") int id) {
+        logger.debug("Request to delete patient by id: {}", id);
         final boolean deleted = patientService.delete(id);
 
         return deleted
@@ -78,6 +87,7 @@ public class PatientController {
 
         Patient patient;
         List<Vaccination> vaccinations;
+        logger.debug("Request to get patient with vaccinations by id: {}, page {}, size {}", patientId, page, size);
 
         if (section.equals("vaccinations")) {
             patient = patientService.read(patientId);

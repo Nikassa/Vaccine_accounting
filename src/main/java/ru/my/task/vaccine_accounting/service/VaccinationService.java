@@ -11,7 +11,7 @@ public interface VaccinationService {
      *
      * @param vaccination - препарат для создания
      */
-    void create(Vaccination vaccination);
+    Vaccination create(Vaccination vaccination);
 
     /**
      * Возвращает список всех имеющихся препаратов

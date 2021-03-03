@@ -3,7 +3,6 @@ package ru.my.task.vaccine_accounting.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.annotations.GenericGenerator;
 import ru.my.task.vaccine_accounting.annotation.InsuranceNumber;
 
 import javax.persistence.*;
@@ -138,4 +137,27 @@ public class Patient {
         this.vaccinations = vaccinations;
     }
 
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", birthDate=" + birthDate +
+                ", gender='" + gender + '\'' +
+                ", insuranceNumber='" + insuranceNumber +
+                '}';
+    }
+
+    public String toStringWithoutId() {
+        return "Patient{" +
+                "lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", birthDate=" + birthDate +
+                ", gender='" + gender + '\'' +
+                ", insuranceNumber='" + insuranceNumber +
+                '}';
+    }
 }

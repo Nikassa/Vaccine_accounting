@@ -10,8 +10,9 @@ public interface PatientService {
      * Создает нового пациента
      *
      * @param patient - пациент для создания
+     * @return - объект пациента с заданным ID
      */
-    void create(Patient patient);
+    Patient create(Patient patient);
 
     /**
      * Возвращает список всех имеющихся пациентов

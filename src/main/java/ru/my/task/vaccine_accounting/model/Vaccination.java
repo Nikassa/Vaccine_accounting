@@ -91,4 +91,21 @@ public class Vaccination {
         this.patients = patients;
     }
 
+    @Override
+    public String toString() {
+        return "Vaccination{" +
+                "id=" + id +
+                ", vaccine='" + vaccine + '\'' +
+                ", permission='" + permission + '\'' +
+                ", vaccinationDate=" + vaccinationDate +
+                '}';
+    }
+
+    public String toStringWithoutId() {
+        return "Vaccination{" +
+                "vaccine='" + vaccine + '\'' +
+                ", permission='" + permission + '\'' +
+                ", vaccinationDate=" + vaccinationDate +
+                '}';
+    }
 }

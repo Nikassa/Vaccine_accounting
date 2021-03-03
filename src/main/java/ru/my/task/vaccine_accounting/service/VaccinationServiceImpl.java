@@ -16,8 +16,8 @@ public class VaccinationServiceImpl implements VaccinationService {
     }
 
     @Override
-    public void create(Vaccination vaccination) {
-        vaccinationRepository.saveAndFlush(vaccination);
+    public Vaccination create(Vaccination vaccination) {
+        return vaccinationRepository.saveAndFlush(vaccination);
     }
 
     @Override

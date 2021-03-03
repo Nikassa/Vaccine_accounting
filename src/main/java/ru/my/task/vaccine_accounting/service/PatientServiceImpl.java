@@ -20,8 +20,9 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public void create(Patient patient) {
+    public Patient create(Patient patient) {
         patientRepository.saveAndFlush(patient);
+        return patient;
     }
 
     @Override

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="ALL" monitorInterval="120">
+
+  <!-- Logging Properties -->
+  <Properties>
+    <Property name="LOG_PATTERN">
+      [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+    </Property>
+    <Property name="APP_LOG_ROOT">
+      Q:/IdeaProjects/work_test_tasks/logs
+    </Property>
+  </Properties>
+
+  <Appenders>
+    <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+      <PatternLayout pattern="${LOG_PATTERN}"/>
+    </Console>
+
+    <RollingFile name="PatientDebugLogs" fileName="${APP_LOG_ROOT}/patient-log.log"
+                 filePattern="${APP_LOG_ROOT}/patient-log-%d{yyyy-MM-dd}-%i.log.gz">
+      <PatternLayout pattern="${LOG_PATTERN}"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1"/>
+        <SizeBasedTriggeringPolicy size="250 MB"/>
+      </Policies>
+    </RollingFile>
+
+    <RollingFile name="VaccinationDebugLogs" fileName="${APP_LOG_ROOT}/vaccination-log.log"
+                 filePattern="${APP_LOG_ROOT}/vaccination-log-%d{yyyy-MM-dd}-%i.log.gz">
+      <PatternLayout pattern="${LOG_PATTERN}"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1"/>
+        <SizeBasedTriggeringPolicy size="250 MB"/>
+      </Policies>
+    </RollingFile>
+
+    <RollingFile name="TraceLogs" fileName="${APP_LOG_ROOT}/trace-log.log"
+                 filePattern="${APP_LOG_ROOT}/trace-log-%d{yyyy-MM-dd}-%i.log.gz">
+      <PatternLayout pattern="${LOG_PATTERN}"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1"/>
+        <SizeBasedTriggeringPolicy size="250 MB"/>
+      </Policies>
+    </RollingFile>
+
+    <RollingFile name="DebugLogs" fileName="${APP_LOG_ROOT}/debug-log.log"
+                 filePattern="${APP_LOG_ROOT}/debug-log-%d{yyyy-MM-dd}-%i.log.gz">
+      <PatternLayout pattern="${LOG_PATTERN}"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1"/>
+        <SizeBasedTriggeringPolicy size="250 MB"/>
+      </Policies>
+    </RollingFile>
+  </Appenders>
+
+  <Loggers>
+    <Logger name="PatientController" level="DEBUG">
+      <AppenderRef ref="PatientDebugLogs"/>
+    </Logger>
+
+    <Logger name="VaccinationController" level="DEBUG">
+      <AppenderRef ref="VaccinationDebugLogs"/>
+    </Logger>
+
+    <Root level="TRACE">
+      <AppenderRef ref="ConsoleAppender"/>
+      <AppenderRef ref="TraceLogs"/>
+      <AppenderRef ref="DebugLogs" level="DEBUG"/>
+    </Root>
+  </Loggers>
+
+</Configuration>
