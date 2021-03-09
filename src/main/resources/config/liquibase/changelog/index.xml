@@ -4,8 +4,10 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-  <include file="config/liquibase/changelog/20200809_1200_create_tables.xml"
-           relativeToChangelogFile="false"/>
-  <include file="config/liquibase/changelog/20200809_1400_insert_into_tables.xml"
-           relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200809_1200_create_tables.xml"
+             relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200809_1400_insert_into_tables.xml"
+             relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210304_1200_security.xml"
+             relativeToChangelogFile="false"/>
 </databaseChangeLog>
